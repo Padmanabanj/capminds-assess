@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Redirect /api/... to backend/api/...
+RewriteRule ^api/([a-zA-Z0-9_-]+)$ backend/api/$1.php [L,QSA]
+
+# Handle /api/students/5 → backend/api/students.php?id=5
+RewriteRule ^api/([a-zA-Z0-9_-]+)/([0-9]+)$ backend/api/$1.php?id=$2 [L,QSA]
+
+# Allow existing files/folders to work normally
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
