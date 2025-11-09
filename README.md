@@ -10,6 +10,84 @@ The application setup uses two different ports:
 
 ------------------------------------------------------------------------
 
+# Project Setup Guide
+
+## 📥 Clone the Repository
+Clone the project directly into your **XAMPP `htdocs` folder`**:
+
+```bash
+cd C:/xampp/htdocs
+git clone https://github.com/Padmanabanj/capminds-assess.git
+```
+
+---
+
+## ⚙️ Backend Setup (Runs on Port 8000)
+
+Your backend is located inside the project and is served through **XAMPP PHP**.
+
+### ✅ Steps:
+1. Open **\xampp\apache\conf\httpd.conf**` in XAMPP.
+2. Update your backend port to **8000** (change to Listen 8000).
+3. Start the following in XAMPP:
+   - **Apache**
+   - **MySQL**
+
+### Database:
+- Import any SQL file if provided.
+- Ensure MySQL is running before testing backend APIs.
+
+---
+
+## 🖥️ Frontend Setup
+
+There are two frontend folders:
+- `/frontend`
+- `/frontend2`
+
+Your primary UI runs on **Vite** using port **5143**.
+
+### Install dependencies:
+```bash
+cd capminds-assess/frontend
+npm install
+```
+
+### Start frontend:
+```bash
+npm run dev
+```
+
+This will automatically run the project on:
+
+```
+http://localhost:5143/
+```
+---
+
+## 🔗 API Connection
+
+Frontend communicates with backend at:
+
+```
+http://localhost:8000/api
+```
+
+Make sure:
+- Backend Apache server is running in XAMPP
+- Frontend environment variables point to **8000**
+
+---
+
+## ✅ Summary
+
+| Component      | Tool / Location                  | Port |
+|----------------|----------------------------------|------|
+| Backend (PHP)  | XAMPP (htdocs)                   | 8000 |
+| Frontend (Vite)| `/frontend` or `/frontend2`      | 5143 |
+| Database       | XAMPP MySQL                      | 3306 |
+
+------------------------------------------------------------------------
 ## 📌 Why 8000 for Backend?
 
 The default Apache port (80) was changed to **8000** inside XAMPP's
@@ -125,13 +203,3 @@ fetch("http://localhost:8000/api/students")
 
 Since backend is PHP and runs on port **8000**, you must include the
 full URL.
-
-------------------------------------------------------------------------
-
-## ✅ Summary
-
--   Frontend runs on **5143**\
--   Backend (PHP Apache) runs on **8000**\
--   `.htaccess` handles SPA routing\
--   Built inside **xampp/htdocs**\
--   Git instructions included
